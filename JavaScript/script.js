@@ -83,6 +83,7 @@ $(document).on("change", ".Number_ input", function () {
   
 })
 
+
 $(document).on("change", ".Symbol_ input", function () {
   
   if(this.checked)
@@ -95,3 +96,7 @@ $(document).on("change", ".Symbol_ input", function () {
   
 })
 
+// Select Random Number Between 8-128.
+function randomNumber(min, max) { 
+  return Math.floor(Math.random() * (max - min) + min);
+} 
