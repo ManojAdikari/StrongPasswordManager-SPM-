@@ -42,7 +42,7 @@ function fnOpenNormalDialog() {
   });
 }
 
-
+// Define Check Box Checked Action.
 
 $('#generate').click(fnOpenNormalDialog);
 
