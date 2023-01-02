@@ -1,6 +1,9 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-
+var upper =false;
+var lower =false;
+var number =false;
+var symbol =false;
+var passwordlength;
 
 
 
@@ -17,15 +20,17 @@ function writePassword() {
 
 // Define the Dialog and its properties.
 function fnOpenNormalDialog() {
-
+  document.getElementById("password").value = "";
   $("#dialog-confirm").dialog({
     resizable: false,
     modal: true,
     title: "Select Character",
-    height: 200,
+    height: 250,
     width: 450,
     create: function (e, ui) {
       var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
+      $("<label class='Length_' ><input  type='Number' max='128' min='8'/> Length</label>").prependTo(pane)
+
       $("<label class='Upper_Case' ><input  type='checkbox'/> Upper Case</label>").prependTo(pane)
       $("<label class='Lower_Case' ><input  type='checkbox'/> Lower Case</label>").prependTo(pane)
       $("<label class='Number_' ><input  type='checkbox'/> Number</label>").prependTo(pane)
@@ -45,6 +50,17 @@ function fnOpenNormalDialog() {
 // Define Check Box Checked Action.
 
 $('#generate').click(fnOpenNormalDialog);
+
+$(document).on("change", ".Lower_Case input", function () {
+
+  if (this.checked) {
+    lower = true;
+  }
+  else {
+    lower = false;
+  }
+
+})
 
 $(document).on("change", ".Upper_Case input", function () {
 
@@ -88,6 +104,17 @@ $(document).on("change", ".Symbol_ input", function () {
   }
   else {
     symbol = false;
+  }
+
+})
+
+$(document).on("change", ".Length_ input", function () {
+
+  if (this.value>=8) {
+    passwordlength=this.value;
+  }
+  else {
+    passwordlength= randomNumber(8, 128);
   }
 
 })
@@ -158,7 +185,7 @@ function callback(value) {
     var key = randomNumber(8, 120);
 
     if (upper || lower || number || symbol == true) {
-      document.getElementById("password").value = generatePassword(number, symbol, upper, lower, key)
+      document.getElementById("password").value = generatePassword(number, symbol, upper, lower, passwordlength)
 
     }
     else {
@@ -173,4 +200,6 @@ function callback(value) {
     document.getElementById("password").value = "";
   }
 }
+
+
 
