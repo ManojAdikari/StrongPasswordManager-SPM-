@@ -16,18 +16,18 @@ This system create strong and random passwords for each subscriber account. The 
 
 ### Home  
 When you click the button to generate a password it will presented with a series of prompts for password criteria
-![alt text](/images/SPM1.png)
+![alt text](/Images/SPM1.png)
 
 
 ### Content
 You can select difarent group of characters and pasword lenth.you heve to select atleast one character type.
-![alt text](images/SPM2.png)
+![alt text](Images/SPM2.png)
 
 
 ### 
 
 
-![alt text](images/SPM3.png)
+![alt text](Images/SPM3.png)
 
 
 
