@@ -100,3 +100,24 @@ $(document).on("change", ".Symbol_ input", function () {
 function randomNumber(min, max) { 
   return Math.floor(Math.random() * (max - min) + min);
 } 
+
+// function Select Random Lowercase
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+
+// Select Random Lowercase
+function getRandomUper() {
+  const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+
+
+function getRandomSymbol() {
+  const symbols = '!@#$%^&*(){}[]=<>/,.'
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
