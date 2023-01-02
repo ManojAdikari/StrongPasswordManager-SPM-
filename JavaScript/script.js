@@ -123,3 +123,30 @@ function getRandomSymbol() {
   const symbols = '!@#$%^&*(){}[]=<>/,.'
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
+
+// function Generate Password
+
+function generatePassword(number, symbol , upperCase , lowerCase , length) {
+  let generatedPassword = '';
+  let variationsCount = [number, symbol,upperCase,lowerCase].length
+  
+  for(let i = 0; i < length; i ++) {
+    if (upperCase) {
+      generatedPassword += getRandomUper();
+    } 
+    if (symbol) {
+      generatedPassword += getRandomSymbol();
+    }
+    if (number) {
+    generatedPassword += getRandomNumber() ;
+    }
+    if (lowerCase) {
+      generatedPassword += getRandomLower();
+      }
+   
+  }
+  
+  const finalPassword = generatedPassword.slice(0, length);
+  
+  return finalPassword;
+}
