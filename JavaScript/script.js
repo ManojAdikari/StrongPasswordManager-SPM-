@@ -106,12 +106,14 @@ function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
-// Select Random Lowercase
+// function Select Random Uppercase
 function getRandomUper() {
   const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
+
+// function Select Random Uppercase
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
