@@ -25,8 +25,15 @@ function fnOpenNormalDialog() {
     resizable: false,
     modal: true,
     title: "Select Character",
-    height: 250,
-    width: 450,
+    //height: 250,
+    //width: 450,
+    modal: true,
+    autoOpen: true,
+    draggable: false,
+    resizable: false,
+    width: "auto",
+    position: { my: "center", at: "center", of: window },
+    
     create: function (e, ui) {
       var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
       $("<label class='Length_' ><input  type='Number' max='128' min='8'/> Length</label>").prependTo(pane)
