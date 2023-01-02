@@ -15,30 +15,30 @@ function writePassword() {
 
 
 
- // Define the Dialog and its properties.
+// Define the Dialog and its properties.
 function fnOpenNormalDialog() {
- 
+
   $("#dialog-confirm").dialog({
-      resizable: false,
-      modal: true,
-      title: "Select Character",
-      height: 200,
-      width: 450,
-      create: function (e, ui) {
-          var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
-          $("<label class='Upper_Case' ><input  type='checkbox'/> Upper Case</label>").prependTo(pane)
-          $("<label class='Lower_Case' ><input  type='checkbox'/> Lower Case</label>").prependTo(pane)
-          $("<label class='Number_' ><input  type='checkbox'/> Number</label>").prependTo(pane)
-          $("<label class='Symbol_' ><input  type='checkbox'/> Symbol</label>").prependTo(pane)
-      },
-      
-      
-      buttons: {
-          "Generate": function () {
-              $(this).dialog('close');
-              callback(true);
-          }
+    resizable: false,
+    modal: true,
+    title: "Select Character",
+    height: 200,
+    width: 450,
+    create: function (e, ui) {
+      var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
+      $("<label class='Upper_Case' ><input  type='checkbox'/> Upper Case</label>").prependTo(pane)
+      $("<label class='Lower_Case' ><input  type='checkbox'/> Lower Case</label>").prependTo(pane)
+      $("<label class='Number_' ><input  type='checkbox'/> Number</label>").prependTo(pane)
+      $("<label class='Symbol_' ><input  type='checkbox'/> Symbol</label>").prependTo(pane)
+    },
+
+
+    buttons: {
+      "Generate": function () {
+        $(this).dialog('close');
+        callback(true);
       }
+    }
   });
 }
 
@@ -47,59 +47,55 @@ function fnOpenNormalDialog() {
 $('#generate').click(fnOpenNormalDialog);
 
 $(document).on("change", ".Upper_Case input", function () {
-  
-  if(this.checked)
-  {
-  upper=true;
+
+  if (this.checked) {
+    upper = true;
   }
-  else{
-    upper=false;
+  else {
+    upper = false;
   }
-  
+
 })
 
- 
+
 $(document).on("change", ".Lower_Case input", function () {
-  
-  if(this.checked)
-  {
-    lower=true;
+
+  if (this.checked) {
+    lower = true;
   }
-  else{
-    lower=false;
+  else {
+    lower = false;
   }
-  
+
 })
 
 $(document).on("change", ".Number_ input", function () {
-  
-  if(this.checked)
-  {
-    number=true;
+
+  if (this.checked) {
+    number = true;
   }
-  else{
-    number=false;
+  else {
+    number = false;
   }
-  
+
 })
 
 
 $(document).on("change", ".Symbol_ input", function () {
-  
-  if(this.checked)
-  {
-    symbol=true;
+
+  if (this.checked) {
+    symbol = true;
   }
-  else{
-    symbol=false;
+  else {
+    symbol = false;
   }
-  
+
 })
 
 // Select Random Number Between 8-128.
-function randomNumber(min, max) { 
+function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
-} 
+}
 
 // function Select Random Lowercase
 function getRandomLower() {
@@ -126,27 +122,55 @@ function getRandomSymbol() {
 
 // function Generate Password
 
-function generatePassword(number, symbol , upperCase , lowerCase , length) {
+function generatePassword(number, symbol, upperCase, lowerCase, length) {
   let generatedPassword = '';
-  let variationsCount = [number, symbol,upperCase,lowerCase].length
-  
-  for(let i = 0; i < length; i ++) {
+  let variationsCount = [number, symbol, upperCase, lowerCase].length
+
+  for (let i = 0; i < length; i++) {
     if (upperCase) {
       generatedPassword += getRandomUper();
-    } 
+    }
     if (symbol) {
       generatedPassword += getRandomSymbol();
     }
     if (number) {
-    generatedPassword += getRandomNumber() ;
+      generatedPassword += getRandomNumber();
     }
     if (lowerCase) {
       generatedPassword += getRandomLower();
-      }
-   
+    }
+
   }
-  
+
   const finalPassword = generatedPassword.slice(0, length);
-  
+
   return finalPassword;
 }
+
+
+//Action SPM ;
+function callback(value) {
+  if (value) {
+
+
+
+
+    var key = randomNumber(8, 120);
+
+    if (upper || lower || number || symbol == true) {
+      document.getElementById("password").value = generatePassword(number, symbol, upper, lower, key)
+
+    }
+    else {
+      alert(" ⚠️ Please select atleast one character type");
+      document.getElementById("password").value = "";
+    }
+
+
+
+  } else {
+    alert("Rejected");
+    document.getElementById("password").value = "";
+  }
+}
+
